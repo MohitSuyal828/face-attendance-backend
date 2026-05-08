@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Smart Attendance System</h1>
+            <p>AI-Powered Face Recognition for Instant Attendance Tracking</p>
+        </header>
+
+        <nav>
+            <a href="/" class="active">Take Attendance</a>
+            <a href="/attendance">View Attendance</a>
+        </nav>
+
+        <div class="main-content">
+            <div class="camera-section">
+                <div class="video-container">
+                    <video id="video" autoplay></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                </div>
+
+                <div class="controls">
+                    <button id="startCamera" class="btn btn-primary">
+                        📷 Start Camera
+                    </button>
+                    <button id="capturePhoto" class="btn btn-success" disabled>
+                        ✓ Capture & Mark Attendance
+                    </button>
+                    <button id="stopCamera" class="btn btn-secondary" disabled>
+                        ⏹ Stop Camera
+                    </button>
+                </div>
+
+                <div class="or-divider">
+                    <span>OR</span>
+                </div>
+
+                <div class="upload-section">
+                    <label for="fileInput" class="btn btn-primary">
+                        📁 Upload Class Photo
+                    </label>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2>Recognition Results</h2>
+                <div id="loadingIndicator" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Processing image...</p>
+                </div>
+                <div id="results" class="results-container">
+                    <p class="placeholder">Results will appear here after capturing or uploading a photo</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>🎓 Registered Students <span class="badge" id="studentCount">0</span></h3>
+            <div id="studentsList" class="students-list">
+                <p class="loading-text">Loading students...</p>
+            </div>
+        </div>
+
+        <div class="training-section">
+            <h3>⚙️ System Management</h3>
+            <button id="trainModel" class="btn btn-warning">
+                🔄 Train/Retrain Model
+            </button>
+            <p class="info-text">Click this button after adding new student photos</p>
+        </div>
+    </div>
+
+    <div id="messageBox" class="message-box"></div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

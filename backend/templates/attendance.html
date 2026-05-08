@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Attendance Records - Face Recognition System</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>📊 Attendance Records</h1>
+                <p>View and manage attendance history</p>
+            </header>
+
+            <nav>
+                <a href="/">Take Attendance</a>
+                <a href="/attendance" class="active">View Attendance</a>
+            </nav>
+
+            <div class="attendance-controls">
+                <button id="loadToday" class="btn btn-primary">
+                    📅 Today's Attendance
+                </button>
+
+                <button id="loadAll" class="btn btn-secondary">
+                    📚 All Records
+                </button>
+
+                <!-- 🔥 NEW EXPORT BUTTON -->
+                <button id="exportExcel" class="btn btn-success">
+                    📥 Export as Excel
+                </button>
+            </div>
+
+            <div class="attendance-content">
+                <div
+                    id="loadingIndicator"
+                    class="loading"
+                    style="display: none"
+                >
+                    <div class="spinner"></div>
+                    <p>Loading attendance records...</p>
+                </div>
+
+                <div id="attendanceResults" class="attendance-results">
+                    <p class="placeholder">
+                        Select an option above to view attendance records
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="messageBox" class="message-box"></div>
+
+        <script src="{{ url_for('static', filename='js/attendance.js') }}"></script>
+    </body>
+</html>
